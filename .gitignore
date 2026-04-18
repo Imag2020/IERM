@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Virtual env
+venv/
+.env/
+
+# Results
+results/*.json
+results/*.txt
+
+# Data (datasets downloaded by user)
+data/*
+!data/README.md
+!data/download_sudoku.py
+!data/download_arc_agi1.py
+!data/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
