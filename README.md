@@ -9,6 +9,9 @@ Official implementation of the paper:
 
 ## Overview
 
+![IERM architecture](figures/ierm_architcture_m.svg)
+
+  
 Interactive Endomorphic Reasoning Models (IERM) cast reasoning as the iterative execution of latent programs induced from small sets of support examples. The architecture separates two components:
 
 - **Program induction (Ψ)** — infers a latent program from the task's support pairs.
@@ -60,17 +63,39 @@ Both `sudoku/` and `arc/` are **self-contained**: each module defines its own pr
 
 ---
 
-## Setup
+## Quick Start
 
-### 1. Environment
+Clone the repository and install dependencies:
 
-```bash
+git clone https://github.com/Imag2020/IERM
+cd IERM
+
 python -m venv venv
 source venv/bin/activate
-pip install torch numpy huggingface_hub tqdm
-```
 
-Tested on PyTorch 2.3+, CUDA 12.1+, Python 3.10–3.12.
+pip install -r requirements.txt
+
+Download the datasets:
+
+python data/download_sudoku.py
+python data/download_arc_agi1.py
+
+Run the main benchmarks:
+
+python -m sudoku.repro \
+    --ckpt checkpoints/sudoku_mlp_62pct.pt \
+    --data_dir data/sudoku
+
+python -m arc.repro \
+    --ckpt checkpoints/arc_12pct.pt \
+    --data_dir data/arc_agi1
+
+Expected results:
+
+Sudoku Extreme solved ≈ 0.63 (TTA×8)  
+ARC-AGI-1 solved ≈ 0.12 (TTA×8)
+
+
 
 ### 2. Data
 
@@ -175,7 +200,7 @@ These notebooks are self-contained and reproduce the figures in the paper.
 
 ## Training
 
-The code released here focuses on **inference reproducibility**. Training scripts with their exact hyperparameters and curriculum will be released in a follow-up update alongside the NeurIPS camera-ready (if accepted). If you need early access for research purposes, please open an issue.
+The code released here focuses on **inference reproducibility**. Training scripts with their exact hyperparameters and curriculum will be released in a follow-up update. If you need early access for research purposes, please open an issue.
 
 ---
 

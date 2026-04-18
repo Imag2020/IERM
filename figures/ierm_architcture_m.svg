@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 900 760">
+  <defs>
+    <style>
+      .title { font: 700 24px Arial, Helvetica, sans-serif; fill: #222; }
+      .label { font: 700 16px Arial, Helvetica, sans-serif; fill: #222; }
+      .small { font: 400 12px Arial, Helvetica, sans-serif; fill: #555; }
+      .tiny  { font: 400 11px Arial, Helvetica, sans-serif; fill: #666; }
+      .panelTitle { font: 700 18px Arial, Helvetica, sans-serif; fill: #222; }
+      .boxTitle { font: 700 14px Arial, Helvetica, sans-serif; fill: #222; }
+      .boxSub { font: 400 12px Arial, Helvetica, sans-serif; fill: #555; }
+      .center { text-anchor: middle; dominant-baseline: middle; }
+
+      .inputBox { fill: #f3f3f3; stroke: #aaaaaa; stroke-width: 1.4; }
+      .embedBox { fill: #eeeafe; stroke: #8b7ed8; stroke-width: 1.5; }
+      .psiPanel { fill: #eaf6f0; stroke: #5fae8b; stroke-width: 1.6; }
+      .phiPanel { fill: #fbefe7; stroke: #d28b62; stroke-width: 1.6; }
+      .psiInner { fill: #eef4ff; stroke: #6f99d8; stroke-width: 1.3; }
+      .phiInner { fill: #fff4e8; stroke: #d8a057; stroke-width: 1.3; }
+      .ctxBox { fill: #edf7e6; stroke: #8eb85d; stroke-width: 1.3; }
+      .outBox { fill: #f5f5f5; stroke: #aaaaaa; stroke-width: 1.3; }
+      .lossBox { fill: #fcecec; stroke: #d88c8c; stroke-width: 1.2; }
+
+      .arrow { stroke: #777; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .arrowThin { stroke: #888; stroke-width: 1.7; fill: none; marker-end: url(#arrow); }
+      .loop { stroke: #9a9a9a; stroke-width: 1.4; fill: none; stroke-dasharray: 6 4; }
+      .dashedBox { stroke: #9a9a9a; stroke-width: 1.5; fill: none; stroke-dasharray: 6 4; }
+    </style>
+
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.7" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M1.5,1.5 L8.5,5 L1.5,8.5" fill="none" stroke="#777" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="900" height="760" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="450" y="36" class="title center">IERM architecture</text>
+
+  <!-- Top row -->
+  <rect x="85" y="72" width="170" height="54" rx="12" class="inputBox"/>
+  <text x="170" y="94" class="label center">Support pairs</text>
+  <text x="170" y="114" class="small center">{(sxᵢ, syᵢ)}ᵢ₌₁..S</text>
+
+  <rect x="645" y="72" width="170" height="54" rx="12" class="inputBox"/>
+  <text x="730" y="94" class="label center">Query grid</text>
+  <text x="730" y="114" class="small center">qx</text>
+
+  <!-- Embedders -->
+  <line x1="170" y1="126" x2="170" y2="155" class="arrow"/>
+  <rect x="55" y="158" width="230" height="48" rx="12" class="embedBox"/>
+  <text x="170" y="178" class="label center">Support Embedder</text>
+  <text x="170" y="195" class="boxSub center">token + row + col + type + pair</text>
+
+  <line x1="730" y1="126" x2="730" y2="155" class="arrow"/>
+  <rect x="615" y="158" width="230" height="48" rx="12" class="embedBox"/>
+  <text x="730" y="178" class="label center">Query Embedder</text>
+  <text x="730" y="195" class="boxSub center">token + row + col</text>
+
+  <!-- Main panels -->
+  <line x1="170" y1="206" x2="170" y2="232" class="arrow"/>
+  <rect x="40" y="234" width="390" height="372" rx="18" class="psiPanel"/>
+  <text x="235" y="264" class="panelTitle center">Ψ: Program Induction</text>
+
+  <line x1="730" y1="206" x2="730" y2="232" class="arrow"/>
+  <rect x="470" y="234" width="390" height="372" rx="18" class="phiPanel"/>
+  <text x="665" y="264" class="panelTitle center">Φ: Recursive Execution</text>
+
+  <!-- Psi init -->
+  <rect x="90" y="300" width="128" height="52" rx="10" class="psiInner"/>
+  <text x="154" y="320" class="boxTitle center">Memory init</text>
+  <text x="154" y="340" class="boxSub center">M ← XA(M₀, supp)</text>
+
+  <rect x="250" y="300" width="128" height="52" rx="10" class="psiInner"/>
+  <text x="314" y="320" class="boxTitle center">Program init</text>
+  <text x="314" y="340" class="boxSub center">P ← learned tokens</text>
+
+  <line x1="154" y1="352" x2="154" y2="382" class="arrowThin"/>
+  <line x1="314" y1="352" x2="314" y2="382" class="arrowThin"/>
+
+  <!-- Psi loop -->
+  <rect x="84" y="386" width="290" height="150" rx="12" class="dashedBox"/>
+  <text x="229" y="406" class="small center">Interactive refinement (Tψ steps)</text>
+
+  <rect x="108" y="432" width="108" height="42" rx="9" class="psiInner"/>
+  <text x="162" y="453" class="boxSub center">Support-conditioned</text>
+  <text x="162" y="467" class="tiny center">memory update</text>
+
+  <rect x="242" y="432" width="108" height="42" rx="9" class="psiInner"/>
+  <text x="296" y="453" class="boxSub center">Program-memory</text>
+  <text x="296" y="467" class="tiny center">interaction</text>
+
+  <line x1="216" y1="453" x2="240" y2="453" class="arrowThin"/>
+  <line x1="240" y1="469" x2="218" y2="469" class="arrowThin"/>
+
+  <path d="M296 474 C296 508, 162 508, 162 474" class="loop"/>
+  <text x="229" y="528" class="small center">loop</text>
+
+  <!-- Refine and ctx -->
+  <line x1="229" y1="536" x2="229" y2="560" class="arrowThin"/>
+  <rect x="140" y="562" width="178" height="44" rx="11" class="ctxBox"/>
+  <text x="229" y="584" class="label center">Refine(P)</text>
+
+  <line x1="229" y1="606" x2="229" y2="622" class="arrowThin"/>
+  <rect x="140" y="624" width="178" height="36" rx="11" class="ctxBox"/>
+  <text x="229" y="642" class="label center">ctx</text>
+
+  <!-- Phi init -->
+  <rect x="525" y="300" width="120" height="48" rx="10" class="phiInner"/>
+  <text x="585" y="324" class="label center">Latent init</text>
+  <text x="585" y="341" class="tiny center">z ← z₀</text>
+
+  <rect x="685" y="300" width="120" height="48" rx="10" class="phiInner"/>
+  <text x="745" y="324" class="label center">Solution init</text>
+  <text x="745" y="341" class="tiny center">y ← x</text>
+
+  <line x1="585" y1="348" x2="585" y2="378" class="arrowThin"/>
+  <line x1="745" y1="348" x2="745" y2="378" class="arrowThin"/>
+
+  <!-- Phi loop -->
+  <rect x="510" y="382" width="310" height="168" rx="12" class="dashedBox"/>
+  <text x="665" y="402" class="small center">Recursive decoding (T × K steps)</text>
+
+  <rect x="535" y="426" width="112" height="50" rx="9" class="phiInner"/>
+  <text x="591" y="445" class="boxSub center">Latent update</text>
+  <text x="591" y="462" class="tiny center">aggregate query + context</text>
+
+  <rect x="683" y="426" width="112" height="50" rx="9" class="phiInner"/>
+  <text x="739" y="445" class="boxSub center">Solution update</text>
+  <text x="739" y="462" class="tiny center">refine from z + context</text>
+
+  <line x1="647" y1="447" x2="681" y2="447" class="arrowThin"/>
+  <line x1="681" y1="463" x2="649" y2="463" class="arrowThin"/>
+
+  <line x1="591" y1="476" x2="591" y2="500" class="arrowThin"/>
+  <line x1="739" y1="476" x2="739" y2="500" class="arrowThin"/>
+
+  <rect x="590" y="500" width="150" height="36" rx="9" class="outBox"/>
+  <text x="665" y="518" class="boxSub center">Residual mixing</text>
+  <text x="665" y="532" class="tiny center">y ← (1−α) y_prev + α y</text>
+
+  <path d="M665 536 C665 560, 605 560, 605 536" class="loop"/>
+  <text x="635" y="572" class="small center">loop</text>
+
+  <!-- Context arrow -->
+  <path d="M318 642 L448 642 L448 451 L533 451" class="arrow"/>
+  <text x="390" y="630" class="small center">support-induced context</text>
+
+  <!-- Output head -->
+  <line x1="665" y1="550" x2="665" y2="574" class="arrowThin"/>
+  <rect x="560" y="576" width="210" height="48" rx="12" class="ctxBox"/>
+  <text x="665" y="596" class="label center">Output head</text>
+  <text x="665" y="613" class="boxSub center">predict output + confidence</text>
+
+  <!-- Outputs -->
+  <line x1="635" y1="624" x2="600" y2="662" class="arrowThin"/>
+  <rect x="550" y="664" width="100" height="40" rx="10" class="outBox"/>
+  <text x="600" y="684" class="label center">logits</text>
+
+  <line x1="695" y1="624" x2="750" y2="662" class="arrowThin"/>
+  <rect x="700" y="664" width="100" height="40" rx="10" class="outBox"/>
+  <text x="750" y="684" class="label center">q̂</text>
+
+  <!-- Aux objectives -->
+  <text x="450" y="718" class="label center">Training-only auxiliary objectives</text>
+
+  <rect x="70" y="730" width="120" height="26" rx="9" class="lossBox"/>
+  <text x="130" y="743" class="boxSub center">LOSO</text>
+
+  <rect x="240" y="730" width="165" height="26" rx="9" class="lossBox"/>
+  <text x="322.5" y="743" class="boxSub center">Support verification</text>
+
+  <rect x="460" y="730" width="190" height="26" rx="9" class="lossBox"/>
+  <text x="555" y="743" class="boxSub center">Output-head aux.</text>
+
+  <rect x="720" y="730" width="110" height="26" rx="9" class="lossBox"/>
+  <text x="775" y="743" class="boxSub center">Confidence</text>
+</svg>
