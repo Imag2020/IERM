@@ -5,6 +5,12 @@ Official implementation of the paper:
 **IERM: Compact Interactive Endomorphic Reasoning Models for Program Induction**
 *Imed Magroune, 2026*
 
+Preprint (submitted to arXiv):  
+[pdf/IERM_arXiv_v1.pdf](pdf/IERM_arXiv_v1.pdf)
+
+Project page:  
+https://magroune.net/research/ierm
+
 ---
 
 ## Overview
