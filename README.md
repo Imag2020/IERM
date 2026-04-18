@@ -21,6 +21,34 @@ This separation lets compact networks (< 5M parameters) exhibit structured algor
 
 ---
 
+## Key Contributions
+
+IERM introduces a compact reasoning architecture based on the explicit
+separation between **program induction** and **program execution**.
+
+Main contributions:
+
+• **Support-induced latent programs**
+  Tasks are summarized into a latent program inferred from a small set
+  of support examples.
+
+• **Iterative endomorphic reasoning**
+  The same operator is recursively applied to a structured reasoning
+  state, enabling multi-step inference.
+
+• **Compact reasoning models**
+  Competitive reasoning behaviour is obtained with fewer than 5M
+  parameters, without large-scale pretraining.
+
+• **Cross-domain reasoning experiments**
+  The same architecture is evaluated on multiple algorithmic reasoning
+  settings:
+  - Sudoku Extreme
+  - ARC-AGI-1
+  - Maze pathfinding
+  - Conway's Game of Life
+  - Heat diffusion dynamics
+    
 ## Results
 
 | Benchmark | Setting | Score | Parameters |
@@ -138,6 +166,9 @@ Pretrained weights are available in the [Releases](../../releases) section of th
 
 ## Reproduction
 
+
+All numbers reported below correspond to the checkpoints released in this repository.
+
 ### Sudoku Extreme
 
 ```bash
@@ -227,6 +258,18 @@ The bibtex will be updated with the arXiv identifier upon preprint release.
 arXiv: *coming soon*
 
 ---
+
+
+## Project Status
+
+This repository contains the reference implementation used for the
+experiments reported in the IERM paper.
+
+The code is provided for research and reproducibility purposes.
+It is not intended to be a general-purpose library.
+
+Training pipelines and additional experiments may evolve as the
+research progresses.
 
 ## License
 
