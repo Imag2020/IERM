@@ -2,7 +2,7 @@
 
 Official implementation of the paper:
 
-**IERM: Interactive Reasoning via Support-Induced Latent Programs**
+**IERM: Compact Interactive Endomorphic Reasoning Models for Program Induction**
 *Imed Magroune, 2026*
 
 ---
@@ -234,6 +234,13 @@ These notebooks are self-contained and reproduce the figures in the paper.
 The code released here focuses on **inference reproducibility**. Training scripts with their exact hyperparameters and curriculum will be released in a follow-up update. If you need early access for research purposes, please open an issue.
 
 ---
+
+
+## Acknowledgements
+
+We thank the open ARC community and prior work on algorithmic
+reasoning benchmarks for making these evaluation environments
+publicly available.
 
 ## Citation
 
